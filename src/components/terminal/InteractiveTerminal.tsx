@@ -36,11 +36,19 @@ export const InteractiveTerminal: React.FC = () => {
     },
   ]);
 
-  const endRef = useRef<HTMLDivElement>(null);
+  const logsContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Only scroll the internal container when new logs are added, never on initial mount
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    if (logsContainerRef.current) {
+      logsContainerRef.current.scrollTop = logsContainerRef.current.scrollHeight;
+    }
   }, [logs]);
 
   const handleCommand = (cmd: string) => {
@@ -356,7 +364,7 @@ export const InteractiveTerminal: React.FC = () => {
           </div>
 
           {/* Terminal Screen & Logs */}
-          <div className="p-4 sm:p-6 space-y-3.5 text-xs sm:text-sm text-gray-200 overflow-y-auto max-h-[460px]">
+          <div ref={logsContainerRef} className="p-4 sm:p-6 space-y-3.5 text-xs sm:text-sm text-gray-200 overflow-y-auto max-h-[460px]">
             {logs.map((log) => (
               <div key={log.id} className="leading-relaxed">
                 {log.type === 'input' ? (
@@ -392,8 +400,6 @@ export const InteractiveTerminal: React.FC = () => {
                 <CornerDownLeft className="w-3.5 h-3.5" />
               </button>
             </div>
-
-            <div ref={endRef} />
           </div>
 
           {/* Quick Command Buttons Bar */}

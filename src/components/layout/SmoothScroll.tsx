@@ -9,6 +9,14 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Ensure the website always opens from the very top
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
     // Check if user prefers reduced motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
@@ -26,6 +34,10 @@ export const SmoothScroll: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     lenisRef.current = lenis;
+
+    if (!window.location.hash) {
+      lenis.scrollTo(0, { immediate: true });
+    }
 
     // Connect Lenis to GSAP ScrollTrigger
     lenis.on('scroll', ScrollTrigger.update);

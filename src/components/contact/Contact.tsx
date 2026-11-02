@@ -170,7 +170,26 @@ export const Contact: React.FC = () => {
           {/* Left Column: Direct Info & Social Channels (5 Cols) */}
           <div className="lg:col-span-5 space-y-8">
             <div className="glass-card p-6 sm:p-8 rounded-2xl border border-theme-border space-y-6">
-              <h3 className="font-heading font-bold text-xl text-theme-primary">
+              {/* Developer Verified Contact Header */}
+              <div className="flex items-center gap-3.5 pb-4 border-b border-theme-border">
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-[#00D4FF]/60 shrink-0 shadow-md">
+                  <img
+                    src={siteConfig.avatarUrl}
+                    alt={siteConfig.name}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <h4 className="font-heading font-bold text-base text-theme-primary">
+                    {siteConfig.name}
+                  </h4>
+                  <p className="text-xs text-[#00D4FF] font-mono">
+                    Direct Consultation &amp; Inquiry
+                  </p>
+                </div>
+              </div>
+
+              <h3 className="font-heading font-bold text-lg text-theme-primary">
                 Direct Contact Channels
               </h3>
               <p className="text-xs sm:text-sm text-theme-muted leading-relaxed">

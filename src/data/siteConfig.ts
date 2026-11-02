@@ -2,6 +2,7 @@ export interface SiteConfig {
   name: string;
   role: string;
   title: string;
+  avatarUrl: string;
   availability: string;
   email: string;
   phonePlaceholder: string;
@@ -35,6 +36,7 @@ export const siteConfig: SiteConfig = {
   name: "Jenish Patel",
   role: "Oracle APEX Developer",
   title: "Oracle APEX Developer, Application Developer & Freelancer",
+  avatarUrl: "/images/jenish-patel.jpg",
   availability: "AVAILABLE FOR FREELANCE PROJECTS",
   email: "contact@jenishpatel.dev", // Configurable
   phonePlaceholder: "+91 98765 43210",

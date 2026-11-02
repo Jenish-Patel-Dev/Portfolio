@@ -10,12 +10,14 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
           setTimeout(() => {
             setIsDone(true);
+            window.scrollTo(0, 0);
             setTimeout(onComplete, 600);
           }, 300);
           return 100;
