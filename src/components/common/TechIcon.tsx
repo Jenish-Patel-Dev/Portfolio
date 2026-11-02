@@ -1,0 +1,90 @@
+import React from 'react';
+import {
+  Database,
+  Server,
+  FileCode2,
+  Terminal,
+  Globe,
+  FileSpreadsheet,
+  BarChart3,
+  LayoutGrid,
+  Code2,
+  Palette,
+  FileCode,
+  Atom,
+  Sparkles,
+  Box,
+  Layers,
+  Network,
+  Braces,
+  Cloud,
+  CreditCard,
+  GitBranch,
+  GitPullRequest,
+  PieChart,
+  TrendingUp,
+  Briefcase,
+  Wrench,
+  Smartphone,
+  Zap,
+  MessageSquare,
+  ShieldCheck,
+  Search,
+  Cpu,
+  CheckCircle2,
+  Rocket,
+  Github,
+  Linkedin,
+  Mail,
+  LucideProps,
+} from 'lucide-react';
+
+const iconMap: Record<string, React.FC<LucideProps>> = {
+  Database,
+  Server,
+  FileCode2,
+  Terminal,
+  Globe,
+  FileSpreadsheet,
+  BarChart3,
+  LayoutGrid,
+  Code2,
+  Palette,
+  FileCode,
+  Atom,
+  Sparkles,
+  Box,
+  Layers,
+  Network,
+  Braces,
+  Cloud,
+  CreditCard,
+  GitBranch,
+  GitPullRequest,
+  PieChart,
+  TrendingUp,
+  Briefcase,
+  Wrench,
+  Smartphone,
+  Zap,
+  MessageSquare,
+  ShieldCheck,
+  Search,
+  Cpu,
+  CheckCircle2,
+  Rocket,
+  Github,
+  Linkedin,
+  Mail,
+};
+
+interface TechIconProps {
+  name: string;
+  className?: string;
+  size?: number;
+}
+
+export const TechIcon: React.FC<TechIconProps> = ({ name, className = 'w-5 h-5', size = 20 }) => {
+  const IconComponent = iconMap[name] || Code2;
+  return <IconComponent className={className} size={size} />;
+};
