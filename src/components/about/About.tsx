@@ -11,6 +11,8 @@ import {
   GraduationCap,
   MapPin,
   CheckCircle,
+  ArrowUpRight,
+  ShieldCheck,
 } from 'lucide-react';
 import { siteConfig } from '@/data/siteConfig';
 
@@ -42,8 +44,8 @@ export const About: React.FC = () => {
         </div>
 
         {/* Narrative & Visual Profile Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
-          {/* Left Narrative Column */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+          {/* Left Narrative Column (7 cols) */}
           <div className="lg:col-span-7 space-y-6">
             {siteConfig.about.paragraphs.map((p, index) => (
               <p
@@ -84,75 +86,109 @@ export const About: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            {/* Quick CTA */}
+            <div className="pt-2">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#00D4FF] hover:text-[#9B6DFF] transition-colors group"
+              >
+                <span>Initiate technical discussion</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+            </div>
           </div>
 
-          {/* Right Profile / Visual Card Column */}
+          {/* Right Profile / Visual Card Column with Real Portrait (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="relative glass-card p-6 sm:p-8 rounded-2xl border border-theme-border bg-gradient-to-b from-theme-card to-theme-secondary/80 shadow-2xl">
-              {/* Decorative Glow */}
-              <div className="absolute -top-10 -right-10 w-44 h-44 bg-[#9B6DFF]/20 rounded-full blur-3xl pointer-events-none" />
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative group"
+            >
+              {/* Futuristic Cybernetic Ambient Glow Background */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-[#9B6DFF] via-[#00D4FF] to-[#FF8A3D] opacity-30 blur-2xl group-hover:opacity-60 transition duration-700 pointer-events-none" />
 
-              {/* Developer Monogram Header */}
-              <div className="flex items-center justify-between pb-6 border-b border-theme-border">
-                <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#9B6DFF] to-[#00D4FF] p-[2px] shadow-lg shadow-[#9B6DFF]/20">
-                    <div className="w-full h-full bg-theme-bg rounded-[14px] flex items-center justify-center font-heading font-extrabold text-xl bg-gradient-to-r from-[#9B6DFF] to-[#00D4FF] bg-clip-text text-transparent">
-                      JP
+              {/* Main Card Frame */}
+              <div className="relative rounded-3xl glass-card overflow-hidden border border-white/15 bg-theme-card/90 shadow-2xl p-4 sm:p-5">
+                {/* Image Showcase Container */}
+                <div className="relative w-full h-[380px] sm:h-[440px] rounded-2xl overflow-hidden border border-white/10 bg-[#08090D]">
+                  {/* Real Portrait of Jenish Patel */}
+                  <img
+                    src={siteConfig.avatarUrl}
+                    alt="Jenish Patel - Oracle APEX Developer"
+                    className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 filter contrast-[1.03] brightness-[1.02]"
+                    loading="lazy"
+                  />
+
+                  {/* Gradient Vignette Overlay for Theme Integration */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#08090D] via-[#08090D]/40 to-transparent pointer-events-none" />
+
+                  {/* Futuristic Neon Cyber Corner Brackets */}
+                  <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#00D4FF] pointer-events-none" />
+                  <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#9B6DFF] pointer-events-none" />
+                  <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#9B6DFF] pointer-events-none" />
+                  <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#00D4FF] pointer-events-none" />
+
+                  {/* Top Floating Status Pill */}
+                  <div className="absolute top-4 left-4 z-10 glass-panel px-3 py-1.5 rounded-full border border-white/15 shadow-lg flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                    </span>
+                    <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-white">
+                      Available for Projects
+                    </span>
+                  </div>
+
+                  {/* Bottom Identity Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 z-10 space-y-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white tracking-tight drop-shadow-md">
+                        {siteConfig.name}
+                      </h3>
+                      <ShieldCheck className="w-5 h-5 text-[#00D4FF]" />
+                    </div>
+
+                    <p className="text-xs font-mono font-medium text-[#00D4FF] drop-shadow">
+                      Oracle APEX Developer &amp; Application Architect
+                    </p>
+
+                    <div className="text-[11px] font-mono text-gray-300 flex items-center gap-1.5 pt-0.5">
+                      <Briefcase className="w-3.5 h-3.5 text-[#9B6DFF]" />
+                      <span>{siteConfig.company}</span>
                     </div>
                   </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg text-theme-primary">
-                      {siteConfig.name}
-                    </h3>
-                    <p className="text-xs text-[#00D4FF] font-mono">
-                      {siteConfig.title}
-                    </p>
+                </div>
+
+                {/* Technical Credentials Footer */}
+                <div className="pt-4 space-y-2.5">
+                  <div className="flex items-center justify-between text-xs px-1">
+                    <span className="text-theme-muted flex items-center gap-1.5">
+                      <Database className="w-3.5 h-3.5 text-[#9B6DFF]" /> Core Stack
+                    </span>
+                    <span className="font-mono text-theme-primary font-semibold">
+                      Oracle APEX 24.x • PL/SQL
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between text-xs px-1">
+                    <span className="text-theme-muted flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" /> Location
+                    </span>
+                    <span className="font-mono text-theme-primary font-semibold">
+                      {siteConfig.location}
+                    </span>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-theme-secondary/80 border border-theme-border/60 text-[11px] text-theme-muted leading-relaxed">
+                    <span className="font-semibold text-theme-primary">Engineering Motto:</span> Scalable relational schemas, zero performance regressions, and intuitive enterprise UX.
                   </div>
                 </div>
-
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-mono text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Available</span>
-                </div>
               </div>
-
-              {/* Verified Technical Foundations */}
-              <div className="py-6 space-y-3.5 border-b border-theme-border">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-theme-muted flex items-center gap-2">
-                    <Database className="w-3.5 h-3.5 text-[#9B6DFF]" /> Primary Engine
-                  </span>
-                  <span className="font-mono text-theme-primary font-semibold">
-                    Oracle APEX &amp; PL/SQL
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-theme-muted flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-[#00D4FF]" /> Location
-                  </span>
-                  <span className="font-mono text-theme-primary font-semibold">
-                    {siteConfig.location}
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-theme-muted flex items-center gap-2">
-                    <Cpu className="w-3.5 h-3.5 text-[#FF8A3D]" /> Specialization
-                  </span>
-                  <span className="font-mono text-theme-primary font-semibold">
-                    Enterprise Workflow Automation
-                  </span>
-                </div>
-              </div>
-
-              {/* Status Note */}
-              <div className="pt-6">
-                <div className="p-3.5 rounded-xl bg-theme-secondary/80 border border-theme-border/60 text-xs text-theme-muted leading-relaxed">
-                  <span className="font-semibold text-theme-primary">Philosophy:</span> Clean schemas, responsive UI, zero technical debt, and robust security by default.
-                </div>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 

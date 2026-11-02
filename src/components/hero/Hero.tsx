@@ -43,11 +43,20 @@ export const Hero: React.FC = () => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border border-[#9B6DFF]/30 shadow-[0_0_20px_rgba(155,109,255,0.15)]"
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-panel border border-[#9B6DFF]/30 shadow-[0_0_20px_rgba(155,109,255,0.15)]"
             >
-              <span className="relative flex h-2.5 w-2.5">
+              {/* Mini Developer Avatar */}
+              <div className="relative w-6 h-6 rounded-full overflow-hidden border border-[#00D4FF]/70 shadow-[0_0_8px_rgba(0,212,255,0.4)] shrink-0">
+                <img
+                  src={siteConfig.avatarUrl}
+                  alt={siteConfig.name}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="text-xs font-mono font-semibold tracking-wider text-theme-primary uppercase">
                 {siteConfig.hero.statusBadge}
@@ -182,9 +191,22 @@ export const Hero: React.FC = () => {
                 <span>Oracle APEX 24.x Ready</span>
               </div>
 
-              <div className="absolute bottom-6 left-2 sm:left-4 glass-panel px-3 py-1.5 rounded-xl border border-white/10 text-[11px] font-mono text-theme-primary flex items-center gap-1.5 shadow-lg pointer-events-none">
-                <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                <span>Enterprise Architecture</span>
+              <div className="absolute bottom-6 left-2 sm:left-4 glass-panel px-3.5 py-2 rounded-xl border border-white/15 text-[11px] font-mono text-theme-primary flex items-center gap-2.5 shadow-xl pointer-events-none">
+                <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-[#9B6DFF]/70 shrink-0 shadow-md">
+                  <img
+                    src={siteConfig.avatarUrl}
+                    alt={siteConfig.name}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div>
+                  <div className="font-heading font-bold text-xs text-white leading-tight">
+                    {siteConfig.name}
+                  </div>
+                  <div className="text-[10px] text-[#00D4FF] font-mono leading-tight">
+                    Oracle APEX Dev
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

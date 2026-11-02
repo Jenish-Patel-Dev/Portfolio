@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Preloader } from '@/components/layout/Preloader';
 import { ScrollProgress } from '@/components/layout/ScrollProgress';
 import { CustomCursor } from '@/components/layout/CustomCursor';
@@ -17,6 +17,13 @@ import { Footer } from '@/components/layout/Footer';
 
 export const HomePage: React.FC = () => {
   const [preloaderComplete, setPreloaderComplete] = useState(false);
+
+  useEffect(() => {
+    // Force start at the very top of the page on load
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-theme-bg text-theme-primary selection:bg-[#9B6DFF]/30 selection:text-white transition-colors duration-300">

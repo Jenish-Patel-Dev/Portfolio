@@ -82,11 +82,13 @@ export const Navbar: React.FC = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-[#9B6DFF] to-[#00D4FF] p-[1.5px] transition-transform duration-300 group-hover:scale-105">
-            <div className="w-full h-full bg-theme-bg rounded-[10px] flex items-center justify-center">
-              <span className="font-heading font-bold text-sm tracking-tighter bg-gradient-to-r from-[#9B6DFF] to-[#00D4FF] bg-clip-text text-transparent">
-                JP
-              </span>
+          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-[#9B6DFF] to-[#00D4FF] p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-md shadow-[#9B6DFF]/20">
+            <div className="w-full h-full bg-theme-bg rounded-[10px] overflow-hidden">
+              <img
+                src={siteConfig.avatarUrl}
+                alt={siteConfig.name}
+                className="w-full h-full object-cover object-top"
+              />
             </div>
           </div>
           <div className="flex flex-col">
